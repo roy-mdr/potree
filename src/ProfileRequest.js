@@ -53,6 +53,7 @@ export class ProfileRequest {
 		this.pointcloud = pointcloud;
 		this.profile = profile;
 		this.maxDepth = maxDepth || Number.MAX_VALUE;
+		console.log("!!!!! CUAL XOTAS ES EL MAX LEVEL?", this.maxDepth)
 		this.callback = callback;
 		this.temporaryResult = new ProfileData(this.profile);
 		this.pointsServed = 0;
@@ -122,7 +123,8 @@ export class ProfileRequest {
 			let node = element.node;
 
 			if(node.level > this.maxDepth){
-				continue;
+				// I think I found the bypass :)
+			//	continue;
 			}
 
 			if (node.loaded) {
@@ -205,6 +207,7 @@ export class ProfileRequest {
 			let distance = Math.abs(segment.cutPlane.distanceToPoint(pos));
 			let centerDistance = Math.abs(segment.halfPlane.distanceToPoint(pos));
 
+			// THIS IS FILTERING THE POINTS ONLY INSIDE THE SECTION RECTANGLE
 			if (distance < this.profile.width / 2 && centerDistance < segment.length / 2) {
 				svp.subVectors(pos, segment.start);
 				let localMileage = segmentDir.dot(svp);

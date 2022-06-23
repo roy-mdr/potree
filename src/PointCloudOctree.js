@@ -545,6 +545,7 @@ export class PointCloudOctree extends PointCloudTree {
 	 *
 	 */
 	getPointsInProfile (profile, maxDepth, callback) {
+		// console.log("!!!!!", "getPointsInProfile. DEPTH", maxDepth);
 		if (callback) {
 			let request = new Potree.ProfileRequest(this, profile, maxDepth, callback);
 			this.profileRequests.push(request);

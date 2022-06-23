@@ -1115,6 +1115,8 @@ export class ProfileWindowController {
 						return;
 					}
 
+					
+					// console.log("!!!!!", "event.points", event.points) // this "event.points" are the chunks (detail level, LoD) from the pointcloud...
 					this.progressHandler(pointcloud, event.points);
 
 					if (this.numPoints > this.threshold) {
@@ -1122,6 +1124,7 @@ export class ProfileWindowController {
 					}
 				},
 				'onFinish': (event) => {
+					console.log("!!!!!", "finshed loading points?", event)
 					if (!this.enabled) {
 
 					}
